@@ -1,0 +1,56 @@
+@each $color, $value in $colors {
+	@include bg-variant(".bg-#{$color}", $value);
+}
+
+@each $color, $value in $theme-colors {
+	@include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+}
+
+@each $color, $value in $colors {
+	@include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+}
+
+
+// Sections
+
+section {
+    //background-color: section-color("primary");
+}
+
+@each $color, $value in $section-colors {
+    @include bg-variant(".section-#{$color}", $value);
+}
+
+@each $color, $value in $theme-colors {
+    @include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+}
+
+@each $color, $value in $grays {
+    .box-gradient-#{$color} {
+        &:before {
+            content:'';
+            position: absolute;
+            width:100%;
+            height: 500px;
+            z-index: -1;
+            background: linear-gradient(180deg, $value 0%, $white 22%, $white 100%);
+            top: 200px;
+            margin-left: auto;
+        }
+    }
+}
+
+// Shape (svg) fill colors
+@each $color, $value in $theme-colors {
+    .fill-#{$color}  {
+        fill: $value;
+    }
+
+    .stroke-#{$color}  {
+        stroke: $value;
+    }
+}
+
+.fill-opacity-8 {
+	fill-opacity: .8;
+}

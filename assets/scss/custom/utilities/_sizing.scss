@@ -1,0 +1,53 @@
+// Height values in vh
+$sizeOptions: (
+  25: 25%,
+  33: 33.33%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+);
+
+$sizeTypes: (
+    w: width,
+    h: height
+);
+
+@for $i from 1 through 20 {
+    @each $key, $value in $sizeTypes {
+        .r#{$key}-#{$i}{
+            #{$value}: #{$i * $font-size-base};
+        }
+        .max-r#{$key}-#{$i}{
+            max-#{$value}: #{$i * $font-size-base};
+        }
+        .min-r#{$key}-#{$i}{
+            min-#{$value}: #{$i * $font-size-base};
+        }
+    }
+}
+
+@each $key, $value in $sizeOptions {
+    @each $sKey, $sValue in $sizeTypes {
+        .max-#{$sKey}-#{$key}{
+            max-#{$sValue}: $value;
+        }
+        .min-#{$sKey}-#{$key}{
+            min-#{$sValue}: $value;
+        }
+
+        $useableKey: $key;
+        @if $key == 33 {
+            $useableKey: 33.33;
+        }
+
+        .#{$sKey}-#{$key}v#{$sKey}{
+            max-#{$sValue}: #{$useableKey + 'v' + $sKey};
+        }
+        .max-#{$sKey}-#{$key}v#{$sKey}{
+            max-#{$sValue}: #{$useableKey + 'v' + $sKey};
+        }
+        .min-#{$sKey}-#{$key}v#{$sKey}{
+            min-#{$sValue}: #{$useableKey + 'v' + $sKey};
+        }
+    }
+}
