@@ -13,6 +13,10 @@ body {
     }
 }
 
+.btn-success {
+    border-radius: 50px;
+}
+
 #intro, #access, #partners {
     h2 {
         color: black !important;
@@ -75,9 +79,6 @@ body {
             max-width: 100vw;
         }
         #intro {
-            #cta {
-                border-radius: 50px;
-            }
             #img-gears {
                 width: 33%;
                 height: auto;
